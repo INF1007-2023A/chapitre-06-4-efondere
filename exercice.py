@@ -8,19 +8,30 @@ import itertools
 
 
 def get_even_keys(dictionary):
-	return {}
+	return {k for k in dictionary.keys() if k % 2 == 0}
+
 
 def join_dictionaries(dictionaries):
-	return {}
+	# apres lecture de la solution...
+	return {
+		key: value
+			for d in dictionaries
+				for key, value in d.items()
+	}
 
 def dictionary_from_lists(keys, values):
-	return {}
+	# autre solution: return dict(zip(keys, values))
+	return {
+		keys[i] : values[i]
+			for i in range(min(len(keys), len(values)))
+	}
 
-def get_greatest_values(dictionnary, num_values):
-	return []
+def get_greatest_values(dictionary, num_values):
+	# en regardant la solution
+	return sorted([v for v in dictionary.values()])[-1:-num_values - 1:-1]
 
-def get_sum_values_from_key(dictionnaries, key):
-	return 0
+def get_sum_values_from_key(dictionaries, key):
+	return sum([v for d in dictionaries for k, v in d.items() if k == key])
 
 
 if __name__ == "__main__":
